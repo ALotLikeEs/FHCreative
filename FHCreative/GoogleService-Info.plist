@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1006513276840-8n1r2omgq69mjl850t4ik2tsmn3i3gm0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1006513276840-8n1r2omgq69mjl850t4ik2tsmn3i3gm0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyALqBHa_z_cZWGgyZVjyJn5nRMe6E-KxZE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1006513276840</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.MontiRed.FHCreative</string>
+	<key>PROJECT_ID</key>
+	<string>fhcreative-2e00c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fhcreative-2e00c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1006513276840:ios:ca67ef67a691ed3425ff9d</string>
+	<key>DATABASE_URL</key>
+	<string>https://fhcreative-2e00c.firebaseio.com</string>
+</dict>
+</plist>
