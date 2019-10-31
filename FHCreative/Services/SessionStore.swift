@@ -124,7 +124,8 @@ class SessionStore : ObservableObject {
                     ratePerHour: snapshot.get("ratePerHour") as? Double ?? 0,
                     userType: snapshot.get("userType") as? String ?? "",
                     rating: snapshot.get("rating") as? Int ?? 0,
-                    company: snapshot.get("company") as? String ?? ""
+                    company: snapshot.get("company") as? String ?? "",
+                    industry: snapshot.get("industry") as? String ?? ""
                 )
             }
         })

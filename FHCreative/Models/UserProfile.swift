@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserProfile : Codable {
+class UserProfile : Codable, Identifiable {
     
     let userID : String
     var firstname : String
@@ -21,8 +21,9 @@ class UserProfile : Codable {
     var userType : String
     var rating : Int
     var company: String
+    var industry: String
        
-    init(userID: String, firstname: String, lastname: String, cellphone: String, dateOfBirth: Double, town: String, country: String, ratePerHour: Double, userType: String, rating : Int, company: String) {
+    init(userID: String, firstname: String, lastname: String, cellphone: String, dateOfBirth: Double, town: String, country: String, ratePerHour: Double, userType: String, rating : Int, company: String, industry : String) {
         self.userID = userID
         self.firstname = firstname
         self.lastname = lastname
@@ -34,5 +35,6 @@ class UserProfile : Codable {
         self.userType = userType
         self.rating = rating
         self.company = company
+        self.industry = industry
     }
 }

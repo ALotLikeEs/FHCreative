@@ -105,42 +105,42 @@ struct createProfileView : View {
         ScrollView {
             ZStack {
                 Background(startColor: Color("FHDusk"), endColor: Color("FHCoral"))
+                VStack {
                     VStack {
-                        VStack {
-                            FHIconType(imageType: "light").resizable().aspectRatio(contentMode: .fit).frame(width:100, height: 100).padding(24)
-                            
-                            Text("Profile picture and Username are visible to the public. Name, Cell, DOB and address are private and are used when processing payment").font(.caption).foregroundColor(.white).frame(width:340, height: 45)
-                        }
-                        VStack {
-                            CustomTextField(systemImageName: "person", textLabel: "firstname", inputText: $firstname)
-                            CustomTextField(systemImageName: "person", textLabel: "lastname", inputText: $lastname)
-                            CustomTextField(systemImageName: "phone", textLabel: "cellphone", inputText: $cellphone)
-                            CustomTextField(systemImageName: "pin", textLabel: "town", inputText: $town)
-                            CustomTextField(systemImageName: "map", textLabel: "country", inputText: $country)
-                            Text("Date of birth").foregroundColor(.white)
-                            DatePicker(
-                                selection: $dateOfBirth,
-                                //in: dateClosedRange,
-                                displayedComponents: .date,
-                                label: { Text("") }
-                            ).foregroundColor(.white)
-                            
-                            //Text("Date of birth: \(formatDate(date: dateOfBirth))").foregroundColor(.white)
-                            VStack {
-                                Slider(value: $ratePerHour, in: 500...10000, step: 100)
-                                Text("Rate per hour: \(doubleToString(getDouble: ratePerHour))")
-                            }
-                            Button(action:{
-                                self.createProfile()
-                            }){
-                                BlueButton(buttonLabel: "Save", condition: isEnabled() )
-                            }.disabled(!isEnabled())
-                        }.onAppear(perform: updateProfile).frame(width:340)
+                        FHIconType(imageType: "light").resizable().aspectRatio(contentMode: .fit).frame(width:100, height: 100).padding(24)
+                        
+                        Text("Profile picture and Username are visible to the public. Name, Cell, DOB and address are private and are used when processing payment").font(.caption).foregroundColor(.white).frame(width:340, height: 45)
                     }
+                    VStack {
+                        CustomTextField(systemImageName: "person", textLabel: "firstname", inputText: $firstname)
+                        CustomTextField(systemImageName: "person", textLabel: "lastname", inputText: $lastname)
+                        CustomTextField(systemImageName: "phone", textLabel: "cellphone", inputText: $cellphone)
+                        CustomTextField(systemImageName: "pin", textLabel: "town", inputText: $town)
+                        CustomTextField(systemImageName: "map", textLabel: "country", inputText: $country)
+                        Text("Date of birth").foregroundColor(.white)
+                        DatePicker(
+                            selection: $dateOfBirth,
+                            //in: dateClosedRange,
+                            displayedComponents: .date,
+                            label: { Text("") }
+                        ).foregroundColor(.white)
+                        
+                        //Text("Date of birth: \(formatDate(date: dateOfBirth))").foregroundColor(.white)
+                        VStack {
+                            Slider(value: $ratePerHour, in: 500...10000, step: 100)
+                            Text("Rate per hour: \(doubleToString(getDouble: ratePerHour))")
+                        }
+                        Button(action:{
+                            self.createProfile()
+                        }){
+                            BlueButton(buttonLabel: "Save", condition: isEnabled() )
+                        }.disabled(!isEnabled())
+                    }.onAppear(perform: updateProfile).frame(width:340)
                 }
             }
         }
     }
+}
 
 struct companyView : View {
     
@@ -213,27 +213,18 @@ struct companyView : View {
 
 struct industryView : View {
     
-    @State var industry : String = ""
+    @EnvironmentObject var session : SessionStore
     
+    let posts = IndustryData.industryPosts()
+
     var body: some View {
         
-        ScrollView {
-            
-            ZStack {
-                Background(startColor: Color("FHDusk"), endColor: Color("FHCoral"))
-                
-                VStack {
-                    //Profile image icon
-                    Image("CompanyLogo").resizable().aspectRatio(contentMode: .fill).frame(width: 120, height: 120).padding(24)
-                    //Text fields
-                    Text("Industry View").font(.title)
-                    
-                    CustomTextField(systemImageName: "flag", textLabel: "company name", inputText: $industry)
-                    
-                    Button(action: {}){
-                        OutlineButton(buttonLabel: "Save").padding(24)
-                    }
-                }.frame(width: 340)
+        NavigationView {
+                        
+            List {
+                ForEach(posts) { post in
+                    IndustryRow(industry: post)
+                }
             }
         }
     }
@@ -248,28 +239,8 @@ struct skillsView : View {
     @State var companyCountry : String = ""
     
     var body: some View {
-        
-        ScrollView {
-            
-            ZStack {
-                Background(startColor: Color("FHDusk"), endColor: Color("FHCoral"))
-                VStack {
-                    //Profile image icon
-                    Image("CompanyLogo").resizable().aspectRatio(contentMode: .fill).frame(width: 120, height: 120).padding(24)
-                    
-                    Text("Skills View").font(.title)
-                    
-                    //Text fields
-                    CustomTextField(systemImageName: "flag", textLabel: "company name", inputText: $companyName)
-                    CustomTextField(systemImageName: "person", textLabel: "tel no.", inputText: $companyTel)
-                    CustomTextField(systemImageName: "phone", textLabel: "work email", inputText: $companyEmail)
-                    CustomTextField(systemImageName: "pin", textLabel: "town", inputText: $companyTown)
-                    CustomTextField(systemImageName: "map", textLabel: "country", inputText: $companyCountry)
-                    Button(action: {}){
-                        OutlineButton(buttonLabel: "Next").padding(24)
-                    }
-                }.frame(width: 340)
-            }
+        NavigationView {
+            Text("Hey")
         }
     }
 }
@@ -320,6 +291,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        profileTabView()
+        industryView()
     }
 }
