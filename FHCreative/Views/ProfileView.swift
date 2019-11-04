@@ -215,14 +215,14 @@ struct industryView : View {
     
     //@EnvironmentObject var session : SessionStore
     
-    var posts = IndustryData.industryPosts()
+    let data = IndustryData()
 
     var body: some View {
         
         NavigationView {
                         
             List {
-                ForEach(posts) { post in
+                ForEach(data.industryPosts()) { post in
                     IndustryRow(industry: post)
                 }
             }

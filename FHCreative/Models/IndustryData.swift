@@ -9,33 +9,44 @@
 import Foundation
 import SwiftUI
 
-struct IndustryData {
+class IndustryData {
     
-    static func industryPosts()-> [Industry] {
-                
-        var snapArray = Array<Any>()
+    var _snapshotArray : Array<Any>?
+    
+    func getSnapshotArray(completionHandler:(Array<Any>?, NSError?) -> ()) -> () {
         
-        //Get documents under 'industry' collection
-        db.collection("industry").getDocuments() { (snapshot, error) in
-
-            if let error = error {
-                print("Error getting documents: \(error)")
+        if let snapArray = self._snapshotArray {
+            completionHandler(snapArray, nil)
+        } else {
+            var snapArray : Array<Any> = []
+            
+            for index in 1...3 {
+                let item = Industry(avatar: "avatar", name : "document", tags: "\(index)")
+                snapArray.append(item)
+            }
+            
+            self._snapshotArray = snapArray
+            completionHandler(snapArray, nil)
+        }
+        
+    }
+    
+    
+    func industryPosts()-> [Industry] {
+        
+        var myArray : Array<Any>? = []
+        
+        getSnapshotArray { (snapshotArray, error) in
+            
+            if snapshotArray != nil {
+                myArray  = snapshotArray!
             } else {
-                                
-                for document in snapshot!.documents {
-                    
-                   let item = Industry(avatar: document.get("avatar") as! String, name:document.documentID, tags: document.get("tags") as! String)
-                    
-                    snapArray.append(item)
-                    
-                    print("\(snapArray)")
-                    //Returns [FHCreative.Industry(id: 54DB00E3-C07E-4CF4-94E9-2B1F6929655D, avatar: "advertising", name: "Advertising", tags: "design, pr, creative")]
-                }
+                print("Got nothing)")
             }
         }
-        print("\(snapArray)")
-        //Returns []
         
-        return snapArray as! [Industry]
+        print("Got this \(String(describing: myArray)))")
+        
+        return myArray as! [Industry]
     }
 }
