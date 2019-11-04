@@ -26,7 +26,6 @@ struct IndustryData {
                     
                    let item = Industry(avatar: document.get("avatar") as! String, name:document.documentID, tags: document.get("tags") as! String)
                     
-                    //Add snapshot items to an array
                     snapArray.append(item)
                     
                     print("\(snapArray)")
