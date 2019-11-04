@@ -106,7 +106,7 @@ class SessionStore : ObservableObject {
         }
     }
     
-    func getProfile(collectionReference: String, documentReference: String) {
+    func getProfile(collectionReference: String, documentReference: String){
         // [START get_collection]
         let user = session?.uid
         let userData = db.collection(collectionReference).document(documentReference)
@@ -133,11 +133,11 @@ class SessionStore : ObservableObject {
     
     func getCompany(collectionReference: String, documentReference: String){
         // [START get_collection]
-        
+
         let companyData = db.collection(collectionReference).document(documentReference)
-        
+
         companyData.addSnapshotListener(includeMetadataChanges: true, listener: { (snapshot, error) in
-            
+
             if let snapshot = snapshot {
                 
                 self.company = Company(
@@ -152,7 +152,7 @@ class SessionStore : ObservableObject {
                     addedBy: snapshot.get("addedBy") as? String ?? "",
                     members:snapshot.get("members") as? Int ?? 0
                 )
-                print("Snapshot: \(String(describing: snapshot.data()))")
+                print("Field updated successfully")
             } else {
                 print("Error: \(String(describing: error))")
             }

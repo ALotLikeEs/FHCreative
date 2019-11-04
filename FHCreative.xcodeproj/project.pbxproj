@@ -12,7 +12,6 @@
 		841AC6BD235EEBDC00E7F1F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 841AC6BC235EEBDC00E7F1F6 /* GoogleService-Info.plist */; };
 		8453E1052362D466004DC4FA /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453E1042362D466004DC4FA /* Company.swift */; };
 		8453E1072362D537004DC4FA /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453E1062362D537004DC4FA /* Variables.swift */; };
-		8455B9F7236B0E4300F702AC /* TODOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455B9F6236B0E4300F702AC /* TODOS.swift */; };
 		8457ECC2235EE578003116AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECC1235EE578003116AA /* AppDelegate.swift */; };
 		8457ECC4235EE578003116AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECC3235EE578003116AA /* SceneDelegate.swift */; };
 		8457ECC6235EE578003116AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECC5235EE578003116AA /* ContentView.swift */; };
@@ -68,7 +67,6 @@
 		841AC6BC235EEBDC00E7F1F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8453E1042362D466004DC4FA /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		8453E1062362D537004DC4FA /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
-		8455B9F6236B0E4300F702AC /* TODOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOS.swift; sourceTree = "<group>"; };
 		8457ECBE235EE578003116AA /* FHCreative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHCreative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8457ECC1235EE578003116AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8457ECC3235EE578003116AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,14 +129,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8455B9F5236B0E0D00F702AC /* ToDo */ = {
-			isa = PBXGroup;
-			children = (
-				8455B9F6236B0E4300F702AC /* TODOS.swift */,
-			);
-			path = ToDo;
-			sourceTree = "<group>";
-		};
 		8457ECB5235EE578003116AA = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +154,6 @@
 		8457ECC0235EE578003116AA /* FHCreative */ = {
 			isa = PBXGroup;
 			children = (
-				8455B9F5236B0E0D00F702AC /* ToDo */,
 				8490D00923603EA800F75DFF /* App */,
 				8490D00823603DFA00F75DFF /* Models */,
 				84D39254235EF79900CBB342 /* Services */,
@@ -565,7 +554,6 @@
 				849129B72369B7140029132D /* Industry.swift in Sources */,
 				84763BB223685A3600085B80 /* ImagePicker.swift in Sources */,
 				8453E1072362D537004DC4FA /* Variables.swift in Sources */,
-				8455B9F7236B0E4300F702AC /* TODOS.swift in Sources */,
 				8457ECC2235EE578003116AA /* AppDelegate.swift in Sources */,
 				84ED5ED023604BAC00E5EE41 /* UserProfile.swift in Sources */,
 				8457ECC4235EE578003116AA /* SceneDelegate.swift in Sources */,

@@ -213,9 +213,9 @@ struct companyView : View {
 
 struct industryView : View {
     
-    @EnvironmentObject var session : SessionStore
+    //@EnvironmentObject var session : SessionStore
     
-    let posts = IndustryData.industryPosts()
+    var posts = IndustryData.industryPosts()
 
     var body: some View {
         

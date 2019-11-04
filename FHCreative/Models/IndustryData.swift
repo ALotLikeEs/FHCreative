@@ -11,48 +11,32 @@ import SwiftUI
 
 struct IndustryData {
     
-    @EnvironmentObject var session : SessionStore
-    
     static func industryPosts()-> [Industry] {
-        
-        let ref = db.collection("industry").document("industry")
-        
-        var snapArray = []
-        
-        ref.addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
-            
-            
-            if let snapshot = snapshot {
-                var item = snapshot.value(forKey: "")
                 
+        var snapArray = Array<Any>()
+        
+        //Get documents under 'industry' collection
+        db.collection("industry").getDocuments() { (snapshot, error) in
+
+            if let error = error {
+                print("Error getting documents: \(error)")
             } else {
-                print("\(error)")
+                                
+                for document in snapshot!.documents {
+                    
+                   let item = Industry(avatar: document.get("avatar") as! String, name:document.documentID, tags: document.get("tags") as! String)
+                    
+                    //Add snapshot items to an array
+                    snapArray.append(item)
+                    
+                    print("\(snapArray)")
+                    //Returns [FHCreative.Industry(id: 54DB00E3-C07E-4CF4-94E9-2B1F6929655D, avatar: "advertising", name: "Advertising", tags: "design, pr, creative")]
+                }
             }
         }
+        print("\(snapArray)")
+        //Returns []
         
-        return
+        return snapArray as! [Industry]
     }
 }
-
-//func snapToArray(collectionReference: String, documentReference: String?) -> [String:String] {
-//
-//    var snapshotArray = [String:String]()
-//
-//    // [START get_collection]
-//    let data = db.collection(collectionReference).document(documentReference!)
-//
-//    data.addSnapshotListener(includeMetadataChanges: true) { (snapshot, error) in
-//        if error == nil {
-//            //Convert Snap to Array
-//            for document in snapshot!.data()! {
-//                snapshotArray.updateValue(document.value as! String, forKey: document.key)
-//            }
-//            print("Array: \(snapshotArray)")
-//            print("Snapshot: \(String(describing: snapshot))")
-//
-//        } else {
-//            print("Error creating snapshotArray: \(String(describing: error))")
-//        }
-//    }
-//    return snapshotArray
-//}
