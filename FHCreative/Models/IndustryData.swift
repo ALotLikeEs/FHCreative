@@ -13,22 +13,24 @@ class IndustryData {
     
     var _snapshotArray : Array<Any>?
     
-    func getSnapshotArray(completionHandler:(Array<Any>?, NSError?) -> ()) -> () {
+    func getSnapshotArray(completionHandler: @escaping (Array<Any>?, NSError?) -> ()) -> () {
         
         if let snapArray = self._snapshotArray {
             completionHandler(snapArray, nil)
         } else {
+            
             var snapArray : Array<Any> = []
             
-            for index in 1...3 {
-                let item = Industry(avatar: "avatar", name : "document", tags: "\(index)")
+            for _ in 1...5 {
+                
+                let item = Industry(avatar: "avatar", name : "document", tags: "tags")
+                
                 snapArray.append(item)
             }
             
             self._snapshotArray = snapArray
             completionHandler(snapArray, nil)
         }
-        
     }
     
     
@@ -46,7 +48,6 @@ class IndustryData {
         }
         
         print("Got this \(String(describing: myArray)))")
-        
         return myArray as! [Industry]
     }
 }

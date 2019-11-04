@@ -152,7 +152,6 @@ class SessionStore : ObservableObject {
                     addedBy: snapshot.get("addedBy") as? String ?? "",
                     members:snapshot.get("members") as? Int ?? 0
                 )
-                print("Field updated successfully")
             } else {
                 print("Error: \(String(describing: error))")
             }
@@ -168,8 +167,6 @@ class SessionStore : ObservableObject {
             
             if error != nil {
                 print("Error updating field - \(String(describing: error)) ")
-            } else {
-                print("Field updated successfully")
             }
         }
     }
@@ -182,9 +179,7 @@ class SessionStore : ObservableObject {
             
             if error != nil {
                 print("Error updating field - \(String(describing: error)) ")
-            } else {
-                print("Field updated successfully")
-            }
+            } 
         }
     }
 }
