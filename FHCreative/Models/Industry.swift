@@ -21,10 +21,3 @@ struct Industry : Identifiable {
         self.tags = tags
     }
 }
-
-struct IndustryArray {
-    
-    var arrays : [Industry] = []
-
-}
-

@@ -28,6 +28,7 @@ struct profileTabView : View {
                         Image(systemName: "person.3")
                         Text("Company")
                     }            }.tag(1)
+            
             industryView()
                 .tabItem {
                     VStack {
@@ -213,19 +214,61 @@ struct companyView : View {
 
 struct industryView : View {
     
-    //@EnvironmentObject var session : SessionStore
+    @EnvironmentObject var session : SessionStore
     
-    let data = IndustryData()
-
+    @State var myArray : Array<Any> = []
+    @State var name : String = ""
+    @State var avatar : String = ""
+    @State var tags : String = ""
+    @State var industryRef : String = ""
+    
+    func getIndustry()-> [Industry] {
+        let data = IndustryData()
+        data.getSnapshotArray(collectionRef: "industry") { (snapshotArray, error) in
+            if snapshotArray != nil {
+                self.myArray = snapshotArray!
+            }
+        }
+        return myArray as! [Industry]
+    }
+    
+    func addIndustry () {
+        
+        let params = ["name":name, "avatar":avatar, "tags":tags]
+        session.addDataWithDocRef(params: params, collectionReference: "indsutry", documentReference: industryRef)
+    }
+    
     var body: some View {
         
         NavigationView {
-                        
+            
             List {
-                ForEach(data.industryPosts()) { post in
-                    IndustryRow(industry: post)
+                ForEach(getIndustry(), id: \.id) { item in
+                    IndustryRow(industry: item)
                 }
-            }
+            } //End list
+                
+                .navigationBarTitle("Industry")
+                .navigationBarItems(trailing:
+                    Button (){
+                        Image(systemName: "plus")
+                    }.gesture
+            )
+        }
+    }
+}
+
+struct addIndustry : View {
+    
+    @State var companyName : String = ""
+    @State var companyTel : String = ""
+    @State var companyEmail : String = ""
+    @State var companyTown : String = ""
+    @State var companyCountry : String = ""
+    
+    var body: some View {
+        NavigationView {
+            Text("Hey")
         }
     }
 }
@@ -291,6 +334,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        industryView()
+        profileTabView()
     }
 }
+

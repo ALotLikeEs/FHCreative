@@ -110,7 +110,6 @@ class SessionStore : ObservableObject {
         // [START get_collection]
         let user = session?.uid
         let userData = db.collection(collectionReference).document(documentReference)
-        
         userData.addSnapshotListener(includeMetadataChanges: true, listener: { (snapshot, error) in
             if let snapshot = snapshot {
                 self.profile = UserProfile(
